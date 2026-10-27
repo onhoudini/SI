@@ -1,13 +1,13 @@
-# Lean Canvas
+# Lean Canvas — Avaliação de Segurança de Modelos de Linguagem Locais
 
-| Designed for | Designed by | Date | Version |
+| Público-alvo | Elaborado por | Data | Versão |
 |---|---|---|---|
-| Corporate clients running local SLMs | Gabriel R. Rocha | 10/20/2026 | 2.0 |
+| Pesquisadores que avaliam modelos de linguagem locais (SLMs e LLMs) | Gabriel Rodrigues da Rocha | 20/10/2026 | 2.0 |
 
-| **Problem** | **Solution** | **Unique Value Proposition** | **Unfair Advantage** | **Customer Segments** |
+| **Problema** | **Solução** | **Proposta de Valor Única** | **Vantagem Injusta** | **Segmentos de Usuários** |
 |---|---|---|---|---|
-| - Chatbots can be made to break their security rules or reveal protected content<br>- No way to test this without sending client data outside the controlled environment | - Automated, fully private security evaluation of a client's model and system prompt<br>- Simulated adaptive attacker to test rule violations and content disclosure<br>- Operator-defined security rules plus system-suggested rules for confirmation<br>- Evidence reports for clients and technical teams | - Private, automated evaluation of whether your chatbot's system prompt can be broken or its protected content revealed, with no data leaving your environment.<br>- Privacy by design: no external contact at any point<br>- Strategy catalog that grows with every evaluation | - Attacker that learns, with a persistent feedback loop of hypotheses instead of a fixed list<br>- Strategy catalog that grows with each test and feeds the next ones<br>- Complete isolation of customer data | - Companies running or planning customer-facing chatbots on local SLMs<br>- Companies with strict confidentiality requirements |
+| - Modelos de linguagem podem violar regras de segurança ou revelar conteúdo protegido.<br>- Pesquisadores precisam de um método para avaliar modelos locais mantendo os dados no ambiente local. | - Avaliar modelos locais e os *system prompts* definidos para o teste.<br>- Simular tentativas de violar regras ou revelar conteúdo protegido.<br>- Permitir que o pesquisador defina regras, conteúdos protegidos e critérios de parada.<br>- Adaptar tentativas conforme os resultados e gerar registros e relatórios das avaliações. | Método adaptável para pesquisadores avaliarem se modelos de linguagem locais (SLMs ou LLMs) se comportam de forma segura ou insegura nas condições testadas, mantendo modelos e dados localmente. | Interface altamente intuitiva e fácil de usar, pensada para que iniciantes possam realizar testes de segurança de modelos locais. | Pesquisadores que avaliam a segurança de modelos de linguagem locais (SLMs e LLMs). |
 
-| **Existing Alternatives** | **Key Metrics** | **Channels** | **Early Adopters** |
+| **Alternativas Existentes** | **Métricas-Chave** | **Canais** | **Usuários Iniciais** |
 |---|---|---|---|
-| - PyRIT (Microsoft)<br>- Promptfoo<br>- Garak | - Violation success rate within the attempt limit<br>- Attempts until first violation<br>- Violation rate per security rule<br>- Strategies cataloged | - Existing client base of the company<br>- Sales team<br>- AI and cybersecurity conferences<br>- Partnerships with AI/LLM integrators | - Companies already running customer-service chatbots on local SLMs<br>- Regulated sectors (finance, legal, healthcare) with data protection duties |
+| - PyRIT (Microsoft)<br>- Promptfoo<br>- Garak | - Violações identificadas por regra de segurança avaliada.<br>- Tentativas até a primeira violação, quando houver.<br>- Estratégias de teste registradas. | Publicação e disponibilização da ferramenta para uso por outros pesquisadores, que poderão utilizá-la e publicar trabalhos com base nela. | Pesquisadores que precisam avaliar a segurança de SLMs ou LLMs executados localmente. |
