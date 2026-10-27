@@ -6,8 +6,8 @@
 * 1.2 O sistema permitirá informar o *system prompt* definido para o teste.
 * 1.3 O sistema permitirá que o pesquisador informe os ataques (prompts) a serem executados, de turno único ou multi-turno.
 * 1.4 No caso de ataques multi-turno, o sistema permitirá que o pesquisador informe a sequência de mensagens.
-* 1.5 O sistema permitirá informar o número de repetições.
-* 1.6 O sistema permitirá que o pesquisador configure os critérios de parada (por exemplo, número fixo de tentativas ou parada na primeira violação) e os limites de execução, de forma totalmente configurável.
+* 1.5 O sistema permitirá informar o número de repetições do experimento.
+* 1.6 O sistema permitirá que o pesquisador configure os critérios de parada (por exemplo, número fixo de tentativas ou parada na primeira violação) e os limites de recursos computacionais utilizados (ex: VRAM, tempo, CPU, RAM, etc.).
 
 **2\. Execução do Teste**
 
@@ -47,11 +47,12 @@
 **4\. Confiabilidade**
 
 * 4.1 Os resultados de cada execução devem ser registrados e preservados, pois os resultados podem variar entre execuções e os testes precisam ser repetidos.
-* 4.2 Os vereditos devem passar por revisão humana por amostragem, pois julgar uma violação pode ser subjetivo.
+* 4.2 Os vereditos podem passar por revisão humana por amostragem configurável (ex: falta de consenso entre as ferramentas. k de N julgadores, onde  k <= N e k > 0 ).
+* 4.3 O sistema deve permitir realizar testes funcionais, de integração e fim a fim.
 
 **5\. Usabilidade**
 
-* 5.1 A interface deve ser intuitiva e fácil de usar, de modo que iniciantes possam realizar testes de segurança de modelos locais.
+* 5.1 A interface deve ser intuitiva e fácil de instalar, configurar e executar.
 
 **6\. Configurabilidade**
 
