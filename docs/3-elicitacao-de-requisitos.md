@@ -4,8 +4,6 @@
 
 | Item | Descrição |
 |---|---|
-| Fontes | Solicitação de Sistema (documento 1) e Lean Canvas (documento 2), elaborados por Gabriel Rodrigues da Rocha. |
-| Técnica | Análise documental das fontes, com validação das decisões de escopo junto ao patrocinador do projeto. |
 | Interessados | Pesquisadores que avaliam a segurança de modelos de linguagem locais (SLMs e LLMs); patrocinador do projeto. |
 | Escopo | Plataforma local, aberta e configurável, para avaliar se modelos de linguagem locais (SLMs ou LLMs) violam regras de segurança ou revelam conteúdo protegido nas condições testadas. |
 
