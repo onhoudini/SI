@@ -1,63 +1,110 @@
-### **Requisitos Funcionais**
+# Elicitação de Requisitos
 
-**1\. Entrada do Teste**
+## 1. Requisitos Funcionais
 
-* 1.1 O sistema permitirá informar os modelos de linguagem locais (SLMs ou LLMs) a serem testados, sem exigir adaptações no material avaliado.
-* 1.2 O sistema permitirá informar o *system prompt* definido para o teste.
-* 1.3 O sistema permitirá que o pesquisador informe os ataques (prompts) a serem executados, de turno único ou multi-turno.
-* 1.4 No caso de ataques multi-turno, o sistema permitirá que o pesquisador informe a sequência de mensagens.
-* 1.5 O sistema permitirá informar o número de repetições do experimento.
-* 1.6 O sistema permitirá que o pesquisador configure os critérios de parada (por exemplo, número fixo de tentativas ou parada na primeira violação) e os limites de recursos computacionais utilizados (ex: VRAM, tempo, CPU, RAM, etc.).
+### 1.1. Configuração da Avaliação
 
-**2\. Execução do Teste**
+**RF01.** O sistema deve permitir selecionar os modelos de linguagem locais (SLMs ou LLMs) que serão avaliados, sem exigir adaptações nos modelos.
 
-* 2.1 O sistema executará os ataques informados contra o modelo testado e receberá suas respostas.
-* 2.2 O sistema encerrará o teste quando um critério de parada configurado for atingido.
-* 2.3 O sistema registrará, para cada tentativa, o ataque utilizado e a resposta do modelo.
+**RF02.** O sistema deve permitir definir um ou mais *system prompts* para a avaliação, incluindo a possibilidade de executar testes sem *system prompt*.
 
-**3\. Avaliação do Resultado**
+**RF03.** O sistema deve permitir configurar os parâmetros de execução dos modelos. As configurações selecionadas serão compartilhadas e aplicadas igualmente a todos os modelos da avaliação.
 
-* 3.1 O sistema indicará, para cada tentativa, se houve violação.
-* 3.2 O sistema utilizará um sistema redundante de verificação para validar o veredito.
-* 3.3 O sistema mostrará a evidência da violação (entrada enviada e resposta recebida).
-* 3.4 O sistema permitirá revisão humana dos vereditos.
+**RF04.** O sistema deve disponibilizar uma coleção predefinida de ataques de *prompt injection*, organizada por tipos de estratégias, permitindo sua ampliação.
 
-**4\. Relatórios e Histórico**
+**RF05.** O sistema deve permitir adicionar ataques personalizados, definidos pelo pesquisador em um formato estruturado, como JSON, e armazená-los para reutilização em avaliações futuras.
 
-* 4.1 O sistema gerará um relatório do histórico de tentativas e seus vereditos.
-* 4.2 O sistema gerará um resumo do resultado do teste.
-* 4.3 O sistema registrará quais ataques funcionaram e quais falharam.
+**RF06.** O sistema deve permitir utilizar ataques de turno único ou multi-turno. Para ataques multi-turno, deve ser possível fornecer uma sequência de mensagens, preservando o contexto da conversa durante sua execução.
 
-### **Requisitos Não Funcionais**
+**RF07.** O sistema deve permitir configurar o número de repetições de cada ataque.
 
-**1\. Operacional**
+**RF08.** Todos os modelos selecionados devem ser avaliados utilizando o mesmo conjunto de *system prompts*, configurações e ataques, permitindo comparações equivalentes.
 
-* 1.1 O sistema deve funcionar totalmente em ambiente local, sem chamadas a serviços externos.
+### 1.2. Execução da Avaliação
 
-**2\. Desempenho**
+**RF09.** O sistema deve calcular a quantidade total de chamadas necessárias para a avaliação com base nos parâmetros configurados:
 
-* 2.1 O sistema deve permitir configurar limites de execução, pois o tempo de execução pode ser alto.
-* 2.2 O ambiente local deve ter capacidade de processamento suficiente para executar os modelos testados.
+$$
+N = M \times S \times C \times A \times R
+$$
 
-**3\. Segurança**
+Onde:
 
-* 3.1 Nenhum dado (modelo, *system prompt*, ataques, respostas, relatórios ou resultados) pode ser enviado para fora do ambiente de teste.
-* 3.2 O acesso ao sistema e aos relatórios deve ser restrito a usuários autorizados, pois o *system prompt* pode conter informação confidencial.
+- \(N\): quantidade total de chamadas;
+- \(M\): quantidade de modelos;
+- \(S\): quantidade de condições de *system prompt* avaliadas;
+- \(C\): quantidade de configurações;
+- \(A\): quantidade de ataques;
+- \(R\): quantidade de repetições por ataque.
 
-**4\. Confiabilidade**
+A quantidade de condições de *system prompt* considera também a condição sem *system prompt*, quando selecionada.
 
-* 4.1 Os resultados de cada execução devem ser registrados e preservados, pois os resultados podem variar entre execuções e os testes precisam ser repetidos.
-* 4.2 Os vereditos podem passar por revisão humana por amostragem configurável (ex: falta de consenso entre as ferramentas. k de N julgadores, onde  k <= N e k > 0 ).
-* 4.3 O sistema deve permitir realizar testes funcionais, de integração e fim a fim.
+**RF10.** O sistema deve executar os ataques configurados contra os modelos selecionados, respeitando as combinações e quantidades definidas na avaliação.
 
-**5\. Usabilidade**
+**RF11.** O sistema deve executar uma avaliação por vez, sem permitir avaliações simultâneas.
 
-* 5.1 A interface deve ser intuitiva e fácil de instalar, configurar e executar.
+**RF12.** A execução deve ser encerrada somente após a conclusão da quantidade de chamadas planejada, sem interrupção antecipada em função da identificação de uma violação.
 
-**6\. Configurabilidade**
+**RF13.** O sistema deve registrar, para cada chamada, o ataque utilizado, a entrada enviada e a resposta recebida do modelo.
 
-* 6.1 A configuração da avaliação deve ser adaptável às necessidades do pesquisador.
+### 1.3. Avaliação dos Resultados
 
-**7\. Cultural e Político**
+**RF14.** O sistema deve utilizar pelo menos dois métodos de verificação para avaliar se houve violação.
 
-* 7.1 O sistema tem natureza ofensiva e deve ser usado apenas com autorização.
+**RF15.** O sistema deve utilizar um método de verificação principal, considerado o mais confiável, e um método complementar para auxiliar na avaliação dos resultados.
+
+**RF16.** O sistema deve apresentar o veredito de cada tentativa e as evidências correspondentes, incluindo a entrada enviada e a resposta recebida.
+
+**RF17.** O sistema deve permitir que o pesquisador revise manualmente qualquer tentativa, utilizando o histórico e as evidências registradas.
+
+**RF18.** A avaliação humana deve poder considerar os resultados dos métodos de verificação, especialmente nos casos em que não houver conclusões suficientemente claras.
+
+### 1.4. Relatórios e Histórico
+
+**RF19.** O sistema deve manter um histórico das chamadas realizadas, incluindo suas respectivas configurações, entradas, respostas e resultados das verificações.
+
+**RF20.** O sistema deve disponibilizar o histórico das tentativas em formato CSV, permitindo sua análise e revisão manual.
+
+**RF21.** O sistema deve gerar relatórios contendo o histórico das tentativas e um resumo dos resultados obtidos.
+
+**RF22.** O sistema deve apresentar quais ataques foram bem-sucedidos e malsucedidos, permitindo analisar os resultados por modelo, *system prompt* e tipo de ataque.
+
+---
+
+## 2. Requisitos Não Funcionais
+
+### 2.1. Operacional
+
+**RNF01.** O sistema deve funcionar integralmente em ambiente local, sem depender de chamadas a serviços externos.
+
+### 2.2. Desempenho
+
+**RNF02.** O sistema deve considerar as limitações de processamento do ambiente local, uma vez que a execução de modelos de linguagem pode exigir recursos computacionais significativos e apresentar tempos elevados.
+
+### 2.3. Segurança
+
+**RNF03.** Nenhum dado relacionado à avaliação, incluindo modelos, *system prompts*, ataques, respostas, relatórios e resultados, pode ser enviado para fora do ambiente local.
+
+**RNF04.** O acesso ao sistema e aos relatórios deve ser restrito a usuários autorizados, considerando a possibilidade de os *system prompts* conterem informações confidenciais.
+
+### 2.4. Confiabilidade
+
+**RNF05.** Os resultados e as configurações de cada avaliação devem ser registrados e preservados, permitindo rastrear as condições em que os experimentos foram realizados.
+
+**RNF06.** O sistema deve preservar as evidências necessárias para a revisão dos resultados, considerando que os métodos automáticos de verificação podem apresentar divergências ou conclusões inconclusivas.
+
+### 2.5. Usabilidade
+
+**RNF07.** A interface deve ser intuitiva e facilitar a instalação, configuração e execução das avaliações.
+
+**RNF08.** A definição de ataques personalizados deve utilizar um formato estruturado e de fácil edição, como JSON, facilitando sua criação, organização, armazenamento e reutilização.
+
+### 2.6. Manutenibilidade e Extensibilidade
+
+**RNF09.** A coleção de ataques disponibilizada pelo sistema deve permitir ampliação e manutenção, possibilitando a inclusão de novas estratégias de *prompt injection*.
+
+---
+
+## 3. Restrições de Uso
+
+**RE01.** A ferramenta possui natureza ofensiva e deve ser utilizada exclusivamente em avaliações autorizadas.
