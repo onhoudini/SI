@@ -85,23 +85,22 @@ A quantidade de condições de *system prompt* considera também a condição se
 
 **RNF03.** Nenhum dado relacionado à avaliação, incluindo modelos, *system prompts*, ataques, respostas, relatórios e resultados, pode ser enviado para fora do ambiente local.
 
-**RNF04.** O acesso ao sistema e aos relatórios deve ser restrito a usuários autorizados, considerando a possibilidade de os *system prompts* conterem informações confidenciais.
 
 ### 2.4. Confiabilidade
 
-**RNF05.** Os resultados e as configurações de cada avaliação devem ser registrados e preservados, permitindo rastrear as condições em que os experimentos foram realizados.
+**RNF04.** Os resultados e as configurações de cada avaliação devem ser registrados e preservados, permitindo rastrear as condições em que os experimentos foram realizados.
 
-**RNF06.** O sistema deve preservar as evidências necessárias para a revisão dos resultados, considerando que os métodos automáticos de verificação podem apresentar divergências ou conclusões inconclusivas.
+**RNF05.** O sistema deve preservar as evidências necessárias para a revisão dos resultados, considerando que os métodos automáticos de verificação podem apresentar divergências ou conclusões inconclusivas.
 
 ### 2.5. Usabilidade
 
-**RNF07.** A interface deve ser intuitiva e facilitar a instalação, configuração e execução das avaliações.
+**RNF06.** A interface deve ser intuitiva e facilitar a instalação, configuração e execução das avaliações.
 
-**RNF08.** A definição de ataques personalizados deve utilizar um formato estruturado e de fácil edição, como JSON, facilitando sua criação, organização, armazenamento e reutilização.
+**RNF07.** A definição de ataques personalizados deve utilizar um formato estruturado e de fácil edição, como JSON, facilitando sua criação, organização, armazenamento e reutilização.
 
 ### 2.6. Manutenibilidade e Extensibilidade
 
-**RNF09.** A coleção de ataques disponibilizada pelo sistema deve permitir ampliação e manutenção, possibilitando a inclusão de novas estratégias de *prompt injection*.
+**RNF08.** A coleção de ataques disponibilizada pelo sistema deve permitir ampliação e manutenção, possibilitando a inclusão de novas estratégias de *prompt injection*.
 
 ---
 
