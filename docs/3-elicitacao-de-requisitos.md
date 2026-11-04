@@ -53,7 +53,7 @@ A quantidade de condições de *system prompt* considera também a condição se
 
 **RF15.** O sistema deve utilizar um método de verificação principal, considerado o mais confiável, e um método complementar para auxiliar na avaliação dos resultados.
 
-**RF16.** O sistema deve apresentar o veredito de cada tentativa e as evidências correspondentes, incluindo a entrada enviada e a resposta recebida.
+**RF16.** O sistema deve apresentar o veredito de cada tentativa (execução completa de um ataque) e as evidências correspondentes, incluindo a entrada enviada e a resposta recebida.
 
 **RF17.** O sistema deve permitir que o pesquisador revise manualmente qualquer tentativa, utilizando o histórico e as evidências registradas.
 
