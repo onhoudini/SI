@@ -25,19 +25,18 @@
 **RF09.** O sistema deve calcular a quantidade total de chamadas necessárias para a avaliação com base nos parâmetros configurados:
 
 $$
-N = M \times S \times C \times A \times R
+ N = | M | \times | S | \times | C | \times | A | \times | R |
 $$
 
 Onde:
 
 - \(N\): quantidade total de chamadas;
-- \(M\): quantidade de modelos selecionados;
-- \(S\): quantidade de condições de *system prompt* avaliadas;
-- \(C\): quantidade de configurações;
-- \(A\): quantidade de ataques;
-- \(R\): quantidade de repetições por ataque.
+- \(M\): conjunto de modelos selecionados;
+- \(S\): conjunto de *system prompt* avaliadas;
+- \(C\): conjunto de configurações;
+- \(A\): conjunto de ataques;
+- \(R\): conjunto de repetições.
 
-A quantidade de condições de *system prompt* considera também a condição sem *system prompt*, quando o usuário não desejar utilizar um *system prompt*.
 
 **RF10.** O sistema deve executar os ataques configurados contra os modelos selecionados, respeitando as combinações e quantidades definidas na avaliação.
 
