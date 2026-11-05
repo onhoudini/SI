@@ -10,13 +10,13 @@
 
 **RF03.** O sistema deve permitir configurar os parâmetros de execução dos modelos. As configurações selecionadas serão compartilhadas e aplicadas igualmente a todos os modelos da avaliação.
 
-**RF04.** O sistema deve disponibilizar uma coleção predefinida de ataques de *prompt injection*, organizada por tipos de estratégias, permitindo sua ampliação.
+**RF04.** O sistema deve disponibilizar uma coleção predefinida de ataques de *prompt injection*, organizada por tipos de estratégias, e permitindo sua ampliação.
 
-**RF05.** O sistema deve permitir adicionar ataques personalizados, definidos pelo pesquisador em um formato estruturado, como JSON, e armazená-los para reutilização em avaliações futuras.
+**RF05.** O sistema deve permitir adicionar ataques personalizados, definidos pelo pesquisador em um formato estruturado, JSON.
 
 **RF06.** O sistema deve permitir utilizar ataques de turno único ou multi-turno. Para ataques multi-turno, deve ser possível fornecer uma sequência de mensagens, preservando o contexto da conversa durante sua execução.
 
-**RF07.** O sistema deve permitir configurar o número de repetições de cada ataque.
+**RF07.** O sistema deve permitir configurar o número de repetições por ataque.
 
 **RF08.** Todos os modelos selecionados devem ser avaliados utilizando o mesmo conjunto de *system prompts*, configurações e ataques, permitindo comparações equivalentes.
 
@@ -31,13 +31,13 @@ $$
 Onde:
 
 - \(N\): quantidade total de chamadas;
-- \(M\): quantidade de modelos;
+- \(M\): quantidade de modelos selecionados;
 - \(S\): quantidade de condições de *system prompt* avaliadas;
 - \(C\): quantidade de configurações;
 - \(A\): quantidade de ataques;
 - \(R\): quantidade de repetições por ataque.
 
-A quantidade de condições de *system prompt* considera também a condição sem *system prompt*, quando selecionada.
+A quantidade de condições de *system prompt* considera também a condição sem *system prompt*, quando o usuário não desejar utilizar um *system prompt*.
 
 **RF10.** O sistema deve executar os ataques configurados contra os modelos selecionados, respeitando as combinações e quantidades definidas na avaliação.
 
@@ -45,13 +45,13 @@ A quantidade de condições de *system prompt* considera também a condição se
 
 **RF12.** A execução deve ser encerrada somente após a conclusão da quantidade de chamadas planejada, sem interrupção antecipada em função da identificação de uma violação.
 
-**RF13.** O sistema deve registrar, para cada chamada, o ataque utilizado, a entrada enviada e a resposta recebida do modelo.
+**RF13.** O sistema deve registrar, para cada chamada, o modelo alvo, o system prompt utilizado (em caso de uso), as configurações do modelo, o ataque utilizado, a entrada enviada e a resposta recebida do modelo.
 
 ### 1.3. Avaliação dos Resultados
 
 **RF14.** O sistema deve utilizar pelo menos dois métodos de verificação para avaliar se houve violação.
 
-**RF15.** O sistema deve utilizar um método de verificação principal, considerado o mais confiável, e um método complementar para auxiliar na avaliação dos resultados.
+**RF15.** O sistema deve utilizar um método de verificação principal, considerado o mais confiável, e um ou mais métodos complementares para auxiliar na avaliação dos resultados.
 
 **RF16.** O sistema deve apresentar o veredito de cada tentativa (execução completa de um ataque) e as evidências correspondentes, incluindo a entrada enviada e a resposta recebida.
 
